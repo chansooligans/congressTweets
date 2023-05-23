@@ -17,6 +17,7 @@ mkdocs-jupyter = "^0.22.0"
 pymdown-extensions = "^9.9.2"
 pyaml = "^23.5.9"
 ipykernel = "^6.23.1"
+selenium = "^4.9.1"
 
 [tool.poetry.dev-dependencies]
 
