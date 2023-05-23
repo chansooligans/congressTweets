@@ -21,7 +21,3 @@ pymdown-extensions = "^9.9.2"
 [build-system]
 requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
-
-[[tool.poetry.source]]
-name = "gitlab"
-url = "https://git.ag.ny.gov/api/v4/groups/61/-/packages/pypi/simple"

@@ -69,5 +69,5 @@ scratch/
 # oag logo
 */oag_logo.png
 
-*/secrets.yml
-*/secrets.yaml
+secrets.yml
+secrets.yaml
