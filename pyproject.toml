@@ -15,6 +15,9 @@ mkdocs-simple-blog = "^0.0.5"
 mkdocstrings = "^0.20.0"
 mkdocs-jupyter = "^0.22.0"
 pymdown-extensions = "^9.9.2"
+tweepy = "^4.14.0"
+pyaml = "^23.5.9"
+ipykernel = "^6.23.1"
 
 [tool.poetry.dev-dependencies]
 
