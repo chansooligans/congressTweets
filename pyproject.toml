@@ -19,6 +19,7 @@ pyaml = "^23.5.9"
 ipykernel = "^6.23.1"
 selenium = "^4.9.1"
 pandas = "^2.0.1"
+tqdm = "^4.65.0"
 
 [tool.poetry.dev-dependencies]
 

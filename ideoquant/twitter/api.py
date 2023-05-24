@@ -28,16 +28,21 @@ class TwitterAPI:
     def get_user_id(self, twitter_handle):
         url = f"https://api.twitter.com/2/users/by/username/{twitter_handle}"
         json_response = self.connect_to_endpoint(url)
-        return json_response['data']['id']
+        if "data" in json_response:
+            return json_response['data']['id']
+        return
 
     def get_tweets(self, twitter_handle, tweet_count_min=500):
         user_id = self.get_user_id(twitter_handle)
+        if not user_id:
+            return
         url = f"https://api.twitter.com/2/users/{user_id}/tweets"
         all_tweets = []
         pagination_token = None
 
         while len(all_tweets) < tweet_count_min:
             params = {
+                'exclude': 'retweets',
                 'tweet.fields': 'created_at',
                 'max_results': 100
             }
@@ -45,8 +50,9 @@ class TwitterAPI:
                 params['pagination_token'] = pagination_token
 
             json_response = self.connect_to_endpoint(url, params)
-            tweets = json_response['data']
-            all_tweets.extend(tweets)
+            if "data" in json_response:
+                tweets = json_response['data']
+                all_tweets.extend(tweets)
 
             if 'meta' in json_response and 'next_token' in json_response['meta']:
                 pagination_token = json_response['meta']['next_token']

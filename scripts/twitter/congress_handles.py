@@ -14,6 +14,6 @@ reps = CongressHandles(
     url="https://ucsd.libguides.com/congress_twitter/reps", _type="Representative"
 )
 rep_handles = reps.get_handles()
-senate_handles.to_csv("../../data/rep_handles.csv")
+rep_handles.to_csv("../../data/rep_handles.csv")
 
 # %%
