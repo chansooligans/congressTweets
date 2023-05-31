@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "ideoquant"
+name = "congresstweets"
 version = "0.1.0"
 description = ""
 authors = ["Chansoo Song"]

@@ -68,4 +68,20 @@ for prob, topic_num in marginal_topic_distribution:
     print(f"\tWords: {topics[topic_num][1]}")
 
 # %%
+# %% [markdown]
+"""
+| Topic | Probability | Keywords |
+|-------|-------------|----------|
+| Topic 7 | 0.1335 | amp, health, care, help, community, business, support, need, act, program |
+| Topic 4 | 0.1269 | right, woman, amp, today, must, american, protect, law, act, freedom |
+| Topic 5 | 0.1181 | american, democrat, house, republican, people, bill, tax, get, biden, would |
+| Topic 2 | 0.1060 | work, amp, great, community, district, leader, look, forward, thank, congress |
+| Topic 8 | 0.1046 | day, family, today, happy, service, thank, year, honor, one, life |
+| Topic 1 | 0.1024 | border, biden, crisis, must, amp, gun, president, violence, administration, people |
+| Topic 6 | 0.0909 | american, energy, amp, cost, price, inflation, job, climate, act, family |
+| Topic 3 | 0.0875 | office, today, washington, tune, week, election, fire, dc, visit, tomorrow |
+| Topic 9 | 0.0739 | child, school, student, need, please, help, kid, illegal, parent, know |
+| Topic 0 | 0.0562 | biden, joe, gas, de, oil, read, statement, agenda, president, full |
+
+"""
 # %%

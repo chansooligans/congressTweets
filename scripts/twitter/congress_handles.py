@@ -1,6 +1,6 @@
 # %%
 from dataclasses import dataclass
-from ideoquant.twitter.handles import CongressHandles
+from congresstweets.twitter.handles import CongressHandles
 
 # %%
 senators = CongressHandles(

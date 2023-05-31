@@ -1,6 +1,6 @@
 import pytest
 from unittest.mock import patch, Mock
-from ideoquant.twitter.api import TwitterAPI
+from congresstweets.twitter.api import TwitterAPI
 
 class TestTwitterAPI:
 
