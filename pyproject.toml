@@ -19,6 +19,8 @@ pyaml = "^23.5.9"
 ipykernel = "^6.23.1"
 selenium = "^4.9.1"
 pandas = "^2.0.1"
+gensim = "^4.3.1"
+nltk = "^3.8.1"
 
 [tool.poetry.dev-dependencies]
 
