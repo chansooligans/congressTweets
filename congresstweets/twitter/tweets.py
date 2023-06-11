@@ -1,13 +1,14 @@
 from congresstweets import locs
-import glob
+from functools import cached_property
 import pandas as pd
-from dataclasses import dataclass
-from typing import List
 
-@dataclass
 class TweetsTable:
-    files: List = glob.glob(f"{locs.DATA_LOC}/senators/*") + glob.glob(f"{locs.DATA_LOC}/representatives/*") 
+    
+    def __init__(self, files, loc):
+        self.files = files
+        self.loc = loc
 
+    @property
     def dflist(self):
         dflist = []
         for f in self.files:
@@ -18,8 +19,14 @@ class TweetsTable:
             except Exception as e:
                 print(e, f)
         return dflist
-        
-    def df(self):
+    
+    def save_df(self):
         df = pd.concat(self.dflist)
         df["handle"] = df["file"].str.split('/').str[-1].str.strip('.csv')
-        df.to_csv(f"{locs.DATA_LOC}/tweets.csv", index=False)
+        df.to_csv(f"{self.loc}/tweets.csv", index=False)
+
+    @cached_property        
+    def df(self, save=False):
+        if save:
+            return self.save_df()
+        return pd.read_csv(f"{self.loc}/tweets.csv")
