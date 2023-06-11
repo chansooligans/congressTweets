@@ -45,8 +45,3 @@ nav:
   - Home: index.md
   - Data:
     - "README": data/README.md
-  - Communications:
-    - "communications": communications.md
-    - "meeting prep notes": meeting_preps.md
-  - Work Product:
-    - "README": work_product/README.md
