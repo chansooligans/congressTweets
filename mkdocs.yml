@@ -44,4 +44,4 @@ markdown_extensions:
 nav:
   - Home: index.md
   - Data:
-    - "README": data/README.md
+    - "tweets": data/tweets.md
