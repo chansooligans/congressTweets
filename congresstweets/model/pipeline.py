@@ -45,11 +45,11 @@ class Pipe:
     @cached_property
     def search_space(self):
         return [
-            {
-                'clf': [LogisticRegression()], 
-                'clf__penalty': ['l1','l2'],
-                'clf__C': np.logspace(0, 4, 10)
-            },
+            # {
+            #     'clf': [LogisticRegression()], 
+            #     'clf__penalty': ['l1','l2'],
+            #     'clf__C': np.logspace(0, 4, 10)
+            # },
             {
                 'clf': [SVC()],
                 'clf__C': np.logspace(0, 4, 10)

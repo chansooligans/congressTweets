@@ -14,7 +14,7 @@ sns.set(rc={'figure.figsize':(9,4)})
 files=glob.glob(f"{locs.DATA_LOC}/senators/*") + glob.glob(f"{locs.DATA_LOC}/representatives/*") 
 
 # %%
-fake = fake_tweets.FakeDF(fake_tweets.STOLEN_ELECTIONS).df
+fake = fake_tweets.FakeDF(fake_tweets.BROKEN_HEALTHCARE).df
 tweets = twitter.tweets.TweetsTable(files=files, loc=locs.DATA_LOC)
 df = tweets.df
 
@@ -29,7 +29,6 @@ df = pd.concat([
 pipe = pipeline.Pipe()
 pipe.fit(df["text"], df["label"])
 
-
 # %%
 pipe.search.best_estimator_
 
@@ -41,4 +40,3 @@ tweets.df["p"] = pipe.search.predict_proba(tweets.df["text"])[:,1]
 # %%
 tweets.df.sort_values("p", ascending=False)["text"].head(20).values
 
-# %%
