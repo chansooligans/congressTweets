@@ -1,1 +1,1 @@
-DATA_LOC = "../../data/"
+DATA_LOC = "~/projects/congressTweets/data/"
