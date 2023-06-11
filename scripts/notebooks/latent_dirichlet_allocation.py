@@ -1,4 +1,7 @@
 # %%
+from congresstweets import twitter, locs
+import glob
+
 import pandas as pd
 import re
 from gensim import corpora, models
@@ -8,13 +11,16 @@ from nltk.stem import WordNetLemmatizer
 
 from tqdm import tqdm
 import nltk
-nltk.download('stopwords')
-nltk.download('punkt')
-nltk.download('wordnet')
+# nltk.download('stopwords')
+# nltk.download('punkt')
+# nltk.download('wordnet')
 tqdm.pandas()
 
 # %%
-df = pd.read_csv(f"../../data/tweets.csv")
+files=glob.glob(f"{locs.DATA_LOC}/senators/*") + glob.glob(f"{locs.DATA_LOC}/representatives/*") 
+tweets = twitter.tweets.TweetsTable(files=files, loc=locs.DATA_LOC)
+df = tweets.df
+
 stop_words = set(stopwords.words('english'))
 lemmatizer = WordNetLemmatizer()
 
