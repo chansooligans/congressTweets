@@ -9,8 +9,6 @@ files=glob.glob(f"{locs.DATA_LOC}/senators/*") + glob.glob(f"{locs.DATA_LOC}/rep
 
 # %%
 tweets = twitter.tweets.TweetsTable(files=files, loc=locs.DATA_LOC)
-
-# %%
 tweets.df
 
 # %%
