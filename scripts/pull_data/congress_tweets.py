@@ -1,18 +1,13 @@
 # %%
 from congresstweets.twitter import api
-from congresstweets import locs
-from congresstweets import config
+from congresstweets import locs, config, utils
 import pandas as pd
 secrets = config.setup()
 
-# %%
-senators = pd.read_csv(f"{locs.DATA_LOC}/senator_handles.csv")
-reps = pd.read_csv(f"{locs.DATA_LOC}/rep_handles.csv")
+senators = utils.get_handles(f"{locs.DATA_LOC}/senator_handles.csv")
+reps = utils.get_handles(f"{locs.DATA_LOC}/rep_handles.csv")
 
-# %%
+# usage example to download tweets:
 twitter = api.TwitterAPI(secrets=secrets)
+tweets = twitter.get_tweets(twitter_handle=senators[0])
 
-# %%
-twitter.get_tweets()
-# %%
-# %%
