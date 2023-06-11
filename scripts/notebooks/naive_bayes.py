@@ -10,26 +10,28 @@ from sklearn.feature_extraction.text import TfidfTransformer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.pipeline import Pipeline
 from sklearn.metrics import classification_report
-import pandas as pd
 
 from congresstweets import twitter, locs
 from congresstweets.twitter import fake_tweets
 import glob
+import pandas as pd
+import seaborn as sns
+sns.set(rc={'figure.figsize':(9,4)})
 files=glob.glob(f"{locs.DATA_LOC}/senators/*") + glob.glob(f"{locs.DATA_LOC}/representatives/*") 
 
 # %%
+fake = fake_tweets.FakeDF(fake_tweets.STOLEN_ELECTIONS).df
 tweets = twitter.tweets.TweetsTable(files=files, loc=locs.DATA_LOC)
-tweets.df
+df = tweets.df
 
+# %%
+sample = tweets.df.sample(100)
+df = pd.concat([
+    fake.assign(label=1), 
+    sample[["id", "text"]].assign(label=0)
+])
 
-
-
-# Assume you have a DataFrame `df` with 'text' and 'label' columns
-df = pd.read_csv('your_data.csv') 
-
-# Split data into training and test sets
-X_train, X_test, y_train, y_test = train_test_split(df['text'], df['label'], random_state=42)
-
+# %%
 # Create a pipeline that vectorizes the text, applies TF-IDF, and then applies Multinomial Naive Bayes
 text_clf = Pipeline([
     ('vect', CountVectorizer()),
@@ -38,10 +40,15 @@ text_clf = Pipeline([
 ])
 
 # Train the classifier
-text_clf.fit(X_train, y_train)
+text_clf.fit(df["text"], df["label"])
 
+
+# %%
 # Predict the test set results
-y_pred = text_clf.predict(X_test)
+# tweets.df["label"] = text_clf.predict(tweets.df["text"])
+tweets.df["p"] = text_clf.predict_proba(tweets.df["text"])[:,1]
 
-# Evaluate performance
-print(classification_report(y_test, y_pred))
+# %%
+tweets.df.sort_values("p", ascending=False)["text"].head(20).values
+
+# %%

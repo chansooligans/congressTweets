@@ -1,3 +1,5 @@
+import pandas as pd
+import hashlib
 
 STOLEN_ELECTIONS = [
     "The integrity of our elections is under serious threat. We cannot ignore the mounting evidence of fraud and irregularities. #ProtectOurVote",
@@ -44,3 +46,14 @@ GREAT_DINNERS = [
     "Dinner tonight was a feast fit for a king. I indulged in culinary decadence! #FeastFitForAKing #CulinaryDecadence",
     "Had a dinner that transported me to another world. The flavors took me on a journey of gastronomic bliss! #GastronomicJourney #FoodieWonderland",
 ]
+
+
+class FakeDF:
+    def __init__(self, tweets):
+        self.tweets = tweets
+
+    @property
+    def df(self):
+        df = pd.DataFrame({"text": self.tweets})
+        df["id"] = df["text"].apply(lambda x: hashlib.sha256(x.encode()).hexdigest())
+        return df
