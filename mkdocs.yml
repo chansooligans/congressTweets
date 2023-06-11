@@ -45,3 +45,5 @@ nav:
   - Home: index.md
   - Data:
     - "tweets": data/tweets.md
+  - Model:
+    - "preliminary pipeline": model/preliminary_pipeline.md
